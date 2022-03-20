@@ -176,7 +176,7 @@
     Ce morceau de code fait uniquement \textit{une} étape. Il faut maintenant implémentée la boucle principale
 
     \subsection{Runtime de la machine}
-    Maintenant qu'une étape de la machine a été implémentée il faut répéter les étapes tant que l'état de la machine n'est pas "H". 
+    Maintenant qu'une étape de la machine a été implémentée il faut répéter les étapes tant que l'état de la machine est "H". 
     On verra dans les exemples comment le programme se comporte face à un programme qui ne s'arrête pas. Là encore nous avons affaire 
     à une boucle conditionnelle que l'on peut implémenter à l'aide d'un label et d'un test conditionnel\par \bigskip
     \begin{figure}[H]
@@ -227,7 +227,7 @@
         \caption{Automate représentant l'addition binaire}
     \end{figure}
     Les 17 lignes du programme sont disponibles \href{https://github.com/coco33920/ocaml-baguettesharp-interpreter/blob/master/examples/turing_programs.txt#L5}{ici}
-    l'exécution pour l'addition de 10 et 8 en (en binaire 1010 et 1000) donne 10010 ce qui est bien 16+2 = 18.
+    l'exécution pour l'addition de 10 et 8 (en binaire 1010 et 1000) donne 10010 ce qui est bien 16+2 = 18.
     \begin{figure}[H]
         \center 
         \includegraphics[]{img/adder.png}
