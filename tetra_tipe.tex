@@ -150,13 +150,13 @@
             \item<1> On lit une parenthèse ouvrante, on match le token précédent
             \item<2> Si c'est une chaîne de caractère on décide que c'est une instruction, une \textit{call expression}
             \begin{itemize}
-                \item<3> On relance l'algorithme de parsing avec un accumulateur vide (pour avoir les paramètres de l'expression)
-                \item<4> On supprime la tête de la liste (qui est généralement le nom de l'instruction) si la liste est non-vide 
-                \item<5> On continue l'algorithme sur la suite de la liste de token en ajoutant une Node \textit{call expression} à l'arbre accumulé
+                \item<2> On relance l'algorithme de parsing avec un accumulateur vide (pour avoir les paramètres de l'expression)
+                \item<2> On supprime la tête de la liste (qui est généralement le nom de l'instruction) si la liste est non-vide 
+                \item<2> On continue l'algorithme sur la suite de la liste de token en ajoutant une Node \textit{call expression} à l'arbre accumulé
             \end{itemize}
-            \item<6> Si le dernier token est une accolade fermante (qui signifie la fin des paramètres d'une déclaration de fonction) alors on 
+            \item<3> Si le dernier token est une accolade fermante (qui signifie la fin des paramètres d'une déclaration de fonction) alors on 
             relance l'algorithme et on renvoie l'accumulateur et le reste de la liste de token
-            \item<7> Sinon on continue l'algorithme en sautant la parenthèse
+            \item<4> Sinon on continue l'algorithme en sautant la parenthèse
         \end{enumerate} 
     \end{frame}
 
