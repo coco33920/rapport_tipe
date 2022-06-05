@@ -1,9 +1,0 @@
-\babel@toc {french}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Résultat dans le REPL de l'opération 1 + 2\relax }}{2}{figure.caption.3}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Initialisation de la machine\relax }}{5}{figure.caption.4}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Runtime de la machine\relax }}{6}{figure.caption.5}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Automate représentant le bitshift\relax }}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Exécution du left-bitshift\relax }}{7}{figure.caption.7}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Automate représentant l'addition binaire\relax }}{8}{figure.caption.8}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Dernières lignes de l'exécution de l'addition binaire\relax }}{8}{figure.caption.9}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Trace d'un programme sans fin\relax }}{9}{figure.caption.10}%
