@@ -133,12 +133,17 @@
     \begin{frame}
         \frametitle{Parser - Algorithme}
         L'algorithme du \textit{parser} est assez classique, bien qu'il ne soit pas exactement un algorithme connu (pour tout faire depuis
-        zéro sans utiliser d'algorithme connu/classiques) il est classique pour un parser récursif en mémorisant le \textit{dernier token} lu
+        zéro sans utiliser d'algorithme connu/classiques) il mémorise le \textit{dernier token} lu
         pour pouvoir calculer le contexte, ci-après l'implémentation du parsing des parenthèses ouvrantes, qui va être présenté en détail
         \begin{figure}[H]
             \center
-            \includegraphics[width=0.7\textwidth]{img/parenth.png}
+            \includegraphics[width=0.6\textwidth]{img/parenth.png}
             \caption{Handler de la lecture du token de parenthèse ouvrante}
+        \end{figure}
+        \begin{figure}[H]
+            \center 
+            \includegraphics[width=0.6\textwidth]{img/parserlexer.png}
+            \caption{Lexer/Parser/Interpreter en action}
         \end{figure}
     \end{frame}
 
