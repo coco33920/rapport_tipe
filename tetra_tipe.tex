@@ -105,10 +105,10 @@
     \begin{frame}
         \frametitle{Lexer - Algorithme}
         \begin{enumerate}
-            \item<1> Le fichier d'entrée est lue et les sauts de ligne sont enlevé
-            \item<2> La chaîne de caractère est coupé en une liste de mot (à chaque blanc)
-            \item<3> Chaque mot est lu et est comparé à un algorithme de reconnaissance des \textit{tokens}
-            \item<4> On répète pour tous les mots et est ajouté à la liste et on répète récursivement
+            \item<1> Le fichier d'entrée est lu et les sauts de ligne sont enlevés
+            \item<2> La chaîne de caractère est coupée en une liste de mot (à chaque blanc)
+            \item<3> Chaque mot est injecté à un algorithme de reconnaissance des \textit{tokens}
+            \item<4> On construit récursivement comme ceci la liste des tokens
             \item<5> On renvoie la liste renversée (pour conserver l'ordre de lecture)
         \end{enumerate}
         \begin{figure}[H]
@@ -121,7 +121,7 @@
     \begin{frame}
         \frametitle{Parser/AST}
 
-        L'AST en lui même est un arbre à n-enfant défini comme ceci en OCaml, bien que générique dans la définition, 
+        L'AST en lui-même est un arbre à n-enfant défini comme ceci en OCaml, bien que générique dans la définition, 
         le type utilisé en pratique est un \textit{parameters ast} 
         \begin{figure}[H]
             \center
@@ -132,9 +132,9 @@
 
     \begin{frame}
         \frametitle{Parser - Algorithme}
-        L'algorithme du \textit{parser} est assez classique, bien qu'il ne soit pas exactement un algorithme connu (tout faire depuis
-        0 sans utiliser d'algorithme déjà utilisé) il est classique pour un parser récursif en mémorisant le \textit{dernier token} lu
-        pour pouvoir tirer lors du contexte, ci-après l'implémentation de quand le parser lit une parenthèse ouvrante, qui va être présenté en détail
+        L'algorithme du \textit{parser} est assez classique, bien qu'il ne soit pas exactement un algorithme connu (pour tout faire depuis
+        zéro sans utiliser d'algorithme connu/classiques) il est classique pour un parser récursif en mémorisant le \textit{dernier token} lu
+        pour pouvoir calculer le contexte, ci-après l'implémentation du parsing des parenthèses ouvrantes, qui va être présenté en détail
         \begin{figure}[H]
             \center
             \includegraphics[width=0.7\textwidth]{img/parenth.png}
@@ -240,14 +240,14 @@
 
     \begin{frame}[allowframebreaks]
         \frametitle{Machine de Turing Universelle Binaire - Implémentation}
-        Ici est utilisé une machine de Turing dite, \textit{binaire}, avec le caractère $2$ comme caractère vide, 
+        Ici est utilisé une machine de Turing dites, \textit{binaire}, avec le caractère $2$ comme caractère vide, 
         il y a un seul état sortant dénoté $\bar{H}$ (pour éviter de le confondre avec le H de la définition, ils sont ensuite confondu) 
         les autres états sont des entiers. 
         Les caractères $r,l,*$ respectivement signifient aller à droite, aller à gauche, et ne pas bouger.
         Enfin la fonction $\delta$ est découpé en trois fonctions $\delta_1,\delta_2,\delta_3$ donnant respectivement 
         le nouvel état, ce qu'il faut écrire sur le ruban, et comment il faut bouger la tête
          on a donc quelque chose comme ci-dessous. 
-         On utilise des matrices pour les fonctions (matrice de tailles (n,3)), un nombre pour l'étape actuelle, et une chaîne de caractère pour le ruban,
+         On utilise des matrices pour les fonctions (matrice de tailles (n,3)), un nombre pour l'étape actuelle et une chaîne de caractère pour le ruban,
          tout ceci pour pouvoir être implémenté en \bsf!
         \begin{align*}
             K &= H \cup Q && Q \subset \mathbb{N} \\
@@ -264,7 +264,7 @@
         \frametitle{Machine de Turing Universelle Binaire - Implémentation en \bs }
         En omettant la boucle lisant l'entrée clavier pour le programme l'important est la partie \textit{étape} dont le code en \bs est 
         disponible sur le compte Github dans le fichier \textit{examples/turing.baguette} à la ligne $26$
-        La boucle principale de \textit{runtime} s'éxécute juste après la lecture du programme qui a lieu après l'initialisation, et ce tant que l'état de la machine n'est pas $H$
+        La boucle principale de \textit{runtime} s'éxécute juste après la lecture du programme qui a lieu après l'initialisation, et ce, tant que l'état de la machine n'est pas $H$
         \begin{figure}[H]
             \center 
             \includegraphics[width=0.7\textwidth]{img/init.png}
