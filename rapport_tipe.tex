@@ -11,6 +11,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{chains,fit,shapes}
 
 \newcommand{\bsf}{Baguette\# }
 \newcommand{\bs}{B\# }
@@ -104,10 +106,75 @@
     donc il est possible de faire un tableau contenant deux entiers, trois flottants et quatre chaînes de caractères.
     Cependant, comme ce sont des tableaux ils sont de \textit{taille fixe} et ils héritent du caractère \textit{mutable}
     des tableaux de OCaml.
-
+    \cleardoublepage
     \section{Machine de Turing Binaire en \bs}
     \subsection{Définition}
 
+        \subsubsection{Définition intuitive}
+        On peut dessiner intuitivement une machine de Turing comme ceci (inspiré de TeXExamples)
+        \begin{figure}[H]
+            \center 
+            \begin{tikzpicture}
+        \tikzstyle{every path}=[very thick]
+        
+        \edef\sizetape{0.7cm}
+        \tikzstyle{tmtape}=[draw,minimum size=\sizetape]
+        \tikzstyle{tmhead}=[arrow box,draw,minimum size=.5cm,arrow box
+        arrows={east:.25cm, west:0.25cm}]
+        
+        %% Draw TM tape
+        \begin{scope}[start chain=1 going right,node distance=-0.15mm]
+            \node [on chain=1,tmtape,draw=none] {$\ldots$};
+            \node [on chain=1,tmtape] {};
+            \node [on chain=1,tmtape] (input) {0};
+            \node [on chain=1,tmtape] {1};
+            \node [on chain=1,tmtape] {};
+            \node [on chain=1,tmtape] {1};
+            \node [on chain=1,tmtape] {1};
+            \node [on chain=1,tmtape] {};
+            \node [on chain=1,tmtape] {};
+            \node [on chain=1,tmtape,draw=none] {$\ldots$};
+            \node [on chain=1] {\textbf{Ruban entrée/sortie}};
+        \end{scope}
+        
+        %% Draw TM Finite Control
+        \begin{scope}
+        [shift={(3cm,-5cm)},start chain=circle placed {at=(-\tikzchaincount*60:1.5)}]
+        \node [on chain] {  \begin{tabular}{l l}
+            état,ruban  & nouvel état,écriture,mouvement\\
+            \hline
+            $q_0,1$                     & $q_1,0,d$ \\
+            $q_0,0$                     & $H,0,d$ \\
+            $\vdots$                   & $\vdots$\\
+          \end{tabular}};
+        
+        % Arrow to current state
+        \node (center) {};
+        
+        \node[rounded corners,draw=black,thick,fit=(circle-1),
+                    label=below:\textbf{$\delta$ fonction de transfert}] (fsbox)
+                {};
+        \end{scope}
+        
+        %% Draw TM head below (input) tape cell
+        \node [tmhead,yshift=-.3cm] at (input.south) (head) {$q_1$};
+        
+        %% Link Finite Control with Head
+        \path[->,draw] (fsbox.north) .. controls (4.5,-1) and (0,-2) .. node[right] 
+                    (headlinetext)
+                     {} 
+                    (head.south);
+        \node[xshift=3cm] at (headlinetext)  
+                    {\begin{tabular}{c} 
+                        \textbf{Tête de lecture/écriture} \\  
+                        \textbf{(peut aller à droite/gauche)} 
+                     \end{tabular}};
+        
+        \end{tikzpicture}     
+            \caption{Représentation d'une Machine de Turing}
+            \end{figure}
+
+        \subsubsection{Définition formelle}
         Une définition formelle d'une machine de Turing est énoncé par Lewis dans \textit{Elements of the Theory of Computation} en 1982, il définit une machine de Turing 
         comme un 5-uplet $(K,\Sigma,\delta,s,H)$ avec $K$ l'ensemble fini d'états possible de la machine, $\Sigma$ est l'alphabet qui contient 
         le caractère nul et le caractère marquant le début du ruban, $s \in K$ est l'état initial de la machine, $\delta$ est la fonction 
